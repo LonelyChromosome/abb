@@ -184,7 +184,7 @@ public partial class MainWindow : Window
 
     private void AddGame_Click(object sender, RoutedEventArgs e)
     {
-        var dlg = new OpenFileDialog
+        var dlg = new Microsoft.Win32.OpenFileDialog
         {
             Title = "Chọn file chạy của game",
             Filter = "Game (*.exe;*.lnk;*.url)|*.exe;*.lnk;*.url|Tất cả file (*.*)|*.*",
@@ -227,7 +227,7 @@ public partial class MainWindow : Window
         }
         catch (Exception ex)
         {
-            MessageBox.Show($"Không mở được {game.Name}:\n{ex.Message}", "Henshin Grid", MessageBoxButton.OK, MessageBoxImage.Warning);
+            System.Windows.MessageBox.Show($"Không mở được {game.Name}:\n{ex.Message}", "Henshin Grid", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
     }
 
@@ -235,7 +235,7 @@ public partial class MainWindow : Window
     {
         // A tile click opens the game only when the click did not originate on a nested button.
         if (e.OriginalSource is DependencyObject origin &&
-            FindAncestor<Button>(origin) is not null) return;
+            FindAncestor<System.Windows.Controls.Button>(origin) is not null) return;
         Play((sender as FrameworkElement)?.Tag as GameEntry);
     }
     private static T? FindAncestor<T>(DependencyObject child) where T : DependencyObject
@@ -264,14 +264,14 @@ public partial class MainWindow : Window
     private void Close_Click(object sender, RoutedEventArgs e) => Close();
     private void DragRegion_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
     {
-        if (e.OriginalSource is DependencyObject node && FindAncestor<Button>(node) != null) return;
+        if (e.OriginalSource is DependencyObject node && FindAncestor<System.Windows.Controls.Button>(node) != null) return;
         if (e.ClickCount == 2) { Maximize_Click(sender, e); return; }
         if (e.LeftButton == MouseButtonState.Pressed) DragMove();
     }
 
     private void SelectWallpaper_Click(object sender, RoutedEventArgs e)
     {
-        var dlg = new OpenFileDialog
+        var dlg = new Microsoft.Win32.OpenFileDialog
         {
             Title = "Chọn hình hoặc video làm wallpaper",
             Filter = "Ảnh / Video|*.png;*.jpg;*.jpeg;*.bmp;*.webp;*.gif;*.mp4;*.wmv;*.avi;*.m4v|Tất cả file|*.*"
@@ -336,7 +336,7 @@ public partial class MainWindow : Window
     private void ApplyTheme()
     {
         var color = (Color)System.Windows.Media.ColorConverter.ConvertFromString(_settings.AccentHex);
-        Application.Current.Resources["NeonCyan"] = new SolidColorBrush(color);
+        System.Windows.Application.Current.Resources["NeonCyan"] = new SolidColorBrush(color);
         Background = new SolidColorBrush(_settings.OledBlack ? Colors.Black : (Color)System.Windows.Media.ColorConverter.ConvertFromString("#071019"));
         WallpaperShade.Fill = new SolidColorBrush(_settings.OledBlack ? Colors.Black : (Color)System.Windows.Media.ColorConverter.ConvertFromString("#081522"));
         WallpaperShade.Opacity = Math.Clamp(_settings.WallpaperDimPercent / 100d, 0, 1);
