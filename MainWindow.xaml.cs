@@ -1,5 +1,4 @@
 using System.Diagnostics;
-using Icon = System.Drawing.Icon;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows;
@@ -165,7 +164,7 @@ public partial class MainWindow : Window
             }
             string exe = game.ExecutablePath;
             if (!File.Exists(exe)) return;
-            using Icon? icon = Icon.ExtractAssociatedIcon(exe);
+            using System.Drawing.Icon? icon = System.Drawing.Icon.ExtractAssociatedIcon(exe);
             if (icon is null) return;
             var result = Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty,
                 BitmapSizeOptions.FromWidthAndHeight(96, 96));
@@ -260,7 +259,7 @@ public partial class MainWindow : Window
         CreateWatchers();
     }
     private void Minimize_Click(object sender, RoutedEventArgs e) => WindowState = WindowState.Minimized;
-    private void Maximize_Click(object sender, RoutedEventArgs e) => WindowState = WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
+    private void Maximize_Click(object sender, RoutedEventArgs e) => WindowState = WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
     private void Close_Click(object sender, RoutedEventArgs e) => Close();
     private void DragRegion_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
     {
