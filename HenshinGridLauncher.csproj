@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <AssemblyName>HenshinGrid</AssemblyName>
+    <RootNamespace>HenshinGrid</RootNamespace>
+    <Version>0.1.0</Version>
+  </PropertyGroup>
+</Project>
