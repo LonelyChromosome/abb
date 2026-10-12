@@ -2,6 +2,7 @@ using HenshinGrid.Services;
 using System.Windows;
 using System.Windows.Media.Imaging;
 using System.Windows.Media;
+using Color = System.Windows.Media.Color;
 
 namespace HenshinGrid;
 
