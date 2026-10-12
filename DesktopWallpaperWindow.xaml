@@ -1,0 +1,19 @@
+<Window x:Class="HenshinGrid.DesktopWallpaperWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="HenshinGrid Wallpaper" Width="1920" Height="1080"
+        WindowStyle="None" ShowInTaskbar="False" ShowActivated="False"
+        ResizeMode="NoResize" Background="#000000">
+  <Grid Background="#000000" IsHitTestVisible="False">
+    <Image x:Name="DesktopImage" Stretch="UniformToFill"/>
+    <MediaElement x:Name="DesktopVideo" Stretch="UniformToFill" LoadedBehavior="Manual" UnloadedBehavior="Stop"
+                  MediaEnded="DesktopVideo_MediaEnded" MediaFailed="DesktopVideo_MediaFailed" IsMuted="True"/>
+    <Rectangle x:Name="DesktopShade" Fill="#000000" Opacity="0.36"/>
+    <Canvas x:Name="DesktopHud" Opacity="0.18" HorizontalAlignment="Right" Width="850" Height="850" VerticalAlignment="Center">
+      <Ellipse Width="720" Height="720" Canvas.Left="65" Canvas.Top="65" Stroke="#51FFF5" StrokeThickness="2" StrokeDashArray="3,14"/>
+      <Ellipse Width="560" Height="560" Canvas.Left="145" Canvas.Top="145" Stroke="#F33F62" StrokeThickness="1"/>
+      <Ellipse Width="440" Height="440" Canvas.Left="205" Canvas.Top="205" Stroke="#48FBE9" StrokeThickness="5" StrokeDashArray="1,22"/>
+      <TextBlock Canvas.Left="292" Canvas.Top="402" FontSize="34" FontFamily="Consolas" Foreground="#AFFFF7" Text="// HENSHIN"/>
+    </Canvas>
+  </Grid>
+</Window>
